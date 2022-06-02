@@ -257,7 +257,7 @@ const getOverdueCard = async (req, res) => {
 const getUpcomingCard = async (req,res) => {
   console.log("Getting upcoming card");
   const list = await getLists('Tasks');
-  const upcomingCard = list.filter(obj => (obj.due_date >= new Date()) && (obj.status == "New") && (obj.status == "Active"));
+  const upcomingCard = list.filter(obj => (obj.due_date >= new Date()) && (obj.status == "New") || (obj.status == "Active"));
   res.send(upcomingCard);
 }
 

@@ -312,6 +312,19 @@ const getStatusDetails = async (req,res) => {
   res.send(statusLoad);
 }
 
+const getPriorityDetails = async (req,res) => {
+  const list = await getLists('Tasks');
+  const statusGroup = _.groupBy(list, 'priority');
+  const statusLoad = []
+  for (let key in statusGroup) {
+    const keyObj = {}
+    keyObj.name = key;
+    keyObj.value = statusGroup[key].length
+    statusLoad.push(keyObj)
+  }
+  res.send(statusLoad);
+}
+
 module.exports = {
   getLists,
   getOverdueCard,
@@ -319,5 +332,6 @@ module.exports = {
   getProjectCard,
   getWorkLoadCard,
   getCustomerDetails,
-  getStatusDetails
+  getStatusDetails,
+  getPriorityDetails
 };

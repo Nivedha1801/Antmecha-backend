@@ -284,7 +284,7 @@ const getWorkLoadCard = async(req,res) => {
   for (let key in groupbyAssignee) {
     const keyObj = {}
     keyObj.assignee = key;
-    keyObj.percentage = ((groupbyAssignee[key].length/totalTask)*100).toFixed(2).toString() + " %"
+    keyObj.percentage = parseFloat(((groupbyAssignee[key].length/totalTask)*100).toFixed(2))
     workLoad.push(keyObj)
   }
   res.send(workLoad)

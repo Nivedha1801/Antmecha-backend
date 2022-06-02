@@ -303,8 +303,8 @@ const getStatusDetails = async (req,res) => {
   const statusLoad = []
   for (let key in statusGroup) {
     const keyObj = {}
-    keyObj.status = key;
-    keyObj.count = statusGroup[key].length
+    keyObj.name = key;
+    keyObj.value = statusGroup[key].length
     statusLoad.push(keyObj)
   }
   res.send(statusLoad);

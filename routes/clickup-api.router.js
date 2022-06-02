@@ -14,5 +14,5 @@ router.get('/workload', clickUpController.getWorkLoadCard);
 router.get('/customer-count', clickUpController.getCustomerDetails);
 router.get('/status-card', clickUpController.getStatusDetails);
 router.get('/priority-card', clickUpController.getPriorityDetails);
-
+router.get('/oledepartment', clickUpController.getOLEDepartment)
 module.exports = router;

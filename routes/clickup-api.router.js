@@ -11,6 +11,7 @@ router.get('/overdue-card', clickUpController.getOverdueCard);
 router.get('/upcoming-card', clickUpController.getUpcomingCard);
 router.get('/project-card', clickUpController.getProjectCard);
 router.get('/workload', clickUpController.getWorkLoadCard);
-router.get('/customer-count', clickUpController.getCustomerDetails)
+router.get('/customer-count', clickUpController.getCustomerDetails);
+router.get('/status-card', clickUpController.getStatusDetails)
 
 module.exports = router;

@@ -284,7 +284,6 @@ const getWorkLoadCard = async(req,res) => {
     keyObj.assignee = key;
     keyObj.percentage = ((groupbyAssignee[key].length/totalTask)*100).toString() + " %"
     workLoad.push(keyObj)
-
   }
   res.send(workLoad)
 }
@@ -298,11 +297,25 @@ const getCustomerDetails = async(req,res) => {
   res.send(list)
 }
 
+const getStatusDetails = async (req,res) => {
+  const list = await getLists('Tasks');
+  const statusGroup = _.groupBy(list, 'status');
+  const statusLoad = []
+  for (let key in statusGroup) {
+    const keyObj = {}
+    keyObj.status = key;
+    keyObj.count = statusGroup[key].length
+    statusLoad.push(keyObj)
+  }
+  res.send(statusLoad);
+}
+
 module.exports = {
   getLists,
   getOverdueCard,
   getUpcomingCard,
   getProjectCard,
   getWorkLoadCard,
-  getCustomerDetails
+  getCustomerDetails,
+  getStatusDetails
 };

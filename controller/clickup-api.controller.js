@@ -18,6 +18,7 @@ const getTasks = async (taskId) => {
         const editedTask = {};
         editedTask.title = task.name;
         editedTask.assignee = task.assignees[0].username;
+        editedTask.priority = task.priority.priority;
         editedTask.due_date = new Date(parseInt(task.due_date));
         for (let custom_field of task.custom_fields) {
           var custom_name = custom_field.name
@@ -257,6 +258,7 @@ const getOverdueCard = async (req, res) => {
 const getUpcomingCard = async (req,res) => {
   console.log("Getting upcoming card");
   const list = await getLists('Tasks');
+  console.log(list)
   const upcomingCard = list.filter(obj => (obj.due_date >= new Date()) && (obj.status == "New") || (obj.status == "Active"));
   res.send(upcomingCard);
 }

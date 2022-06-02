@@ -12,7 +12,7 @@ app.use(cors({ credentials: true, origin: true }));
 
 const clickupRouter = require("./routes/clickup-api.router");
 
-app.use("/auth/clickup", clickupRouter);
+app.use("/clickup", clickupRouter);
 
 app.get('/redirect', (req,res) => {
   console.log("Redirected msg")
